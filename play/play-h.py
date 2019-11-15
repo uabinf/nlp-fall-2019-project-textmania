@@ -4,8 +4,11 @@ import pandas as pd
 from pandas import ExcelFile
 from nltk.tokenize.stanford import StanfordTokenizer 
 import Levenshtein as leven
+import sys
+import os
 
-df = pd.read_excel("list_dak.xlsx")
+print(os.path.abspath(__file__))
+df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/../ignore-dir/list_dak.xlsx")
 stk = StanfordTokenizer()
 
 # print("Column Names:")
