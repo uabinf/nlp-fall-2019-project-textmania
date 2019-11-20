@@ -29,6 +29,6 @@
 ## Info
 
 Mimic Database has no instances of Heterotaxy.
-Situs Inversus is the cloest condition in the database to Heterotaxy.
+Situs Inversus is the closest condition in the database to Heterotaxy.
 
 
