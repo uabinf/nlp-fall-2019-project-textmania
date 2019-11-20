@@ -41,15 +41,15 @@ specoth = specoth.to_list()
 specoth = [x for x in specoth if type(x) is str]
 
 print(f"Specoth Count: {len(specoth)}")
-# print("\n".join(specoth))
 
-for index, item in enumerate(specoth):
-  tokens = stk.tokenize(item)
-  for t in tokens:
-    editdist = leven.distance(t.lower(), 'heterotaxy'.lower())
-    if editdist < 4:
-      print(f"{index} - {item} - {t}")
-      print(f"EDIT DISTANCE: {editdist}")
+for keyword in keywords:
+  for index, item in enumerate(specoth):
+    tokens = stk.tokenize(item)
+    for t in tokens:
+      editdist = leven.distance(t.lower(), 'heterotaxy'.lower())
+      if editdist < 4:
+        print(f"{index} - {item} - {t}")
+        print(f"EDIT DISTANCE: {editdist}")
 
 print("\n-----------\n")
 chd_othsp = [item for item in df["CHD_OTHSP"].to_list() if type(item) is str]
