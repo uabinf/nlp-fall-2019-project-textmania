@@ -9,7 +9,8 @@ import os
 
 print(os.path.abspath(__file__))
 df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/../ignore-dir/list_dak.xlsx")
-stk = StanfordTokenizer()
+stk = StanfordTokenizer() #Dependencies in the lib folder.
+keywords = ["ASPLENIA", "HETEROTAXY"]
 
 # print("Column Names:")
 # print(df.columns)
@@ -30,6 +31,8 @@ stk = StanfordTokenizer()
 #       print(item)
 #   elif type(item) is not float:
 #     print(f"{type(item)} - {item}")
+
+
     
 print("SPECOTH")
 specoth = df["SPECOTH"]
@@ -41,11 +44,12 @@ print(f"Specoth Count: {len(specoth)}")
 # print("\n".join(specoth))
 
 for index, item in enumerate(specoth):
-  if 'taxy' in item:
-    print(f"SPEC: {index} - {item}")
-    tokens = stk.tokenize(item)
-    for t in tokens:
-      print(f"EDIT DISTANCE: {leven.distance(item.lower(), 'HETROTAXY'.lower())}")
+  tokens = stk.tokenize(item)
+  for t in tokens:
+    editdist = leven.distance(t.lower(), 'heterotaxy'.lower())
+    if editdist < 4:
+      print(f"{index} - {item} - {t}")
+      print(f"EDIT DISTANCE: {editdist}")
 
 print("\n-----------\n")
 chd_othsp = [item for item in df["CHD_OTHSP"].to_list() if type(item) is str]
@@ -53,9 +57,12 @@ print(f"Chd_Othsp Count: {len(chd_othsp)}")
 # print("\n".join(chd_othsp))
 
 for index, item in enumerate(chd_othsp):
-  if 'taxy' in item:
-    print(f"CHD: {index} - {item}")
-
+  tokens = stk.tokenize(item)
+  for t in tokens:
+    editdist = leven.distance(t.lower(), 'heterotaxy'.lower())
+    if editdist < 4:
+      print(f"{index} - {item} - {t}")
+      print(f"EDIT DISTANCE: {editdist}")
 
 
 
