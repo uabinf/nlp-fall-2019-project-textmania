@@ -10,6 +10,8 @@ import os
 print(os.path.abspath(__file__))
 df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/../ignore-dir/list_dak.xlsx")
 stk = StanfordTokenizer() #Dependencies in the lib folder.
+
+#Need to add other keywords here
 keywords = ["ASPLENIA", "HETEROTAXY"]
 
 # print("Column Names:")
