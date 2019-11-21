@@ -12,7 +12,7 @@ df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/../ignore-dir/
 stk = StanfordTokenizer() #Dependencies in the lib folder.
 
 #Need to add other keywords here
-keywords = ["ASPLENIA", "HETEROTAXY"]
+keywords = ["ASPLENIA", "HETEROTAXY","POLYSPLENIA","ISOMERISM"]
 
 # print("Column Names:")
 # print(df.columns)
