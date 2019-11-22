@@ -8,29 +8,37 @@ import Levenshtein as leven
 import sys
 import os
 
-print(os.path.abspath(__file__))
-df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/ignore-dir/list_dak.xlsx")
-stk = StanfordTokenizer() #Dependencies in the lib folder, ADD IT TO YOUR `CLASSPATH` env variable
 keywords = ["Asplenia", "Heterotaxy", "Polysplenia", "Isomerism", "Dextrocardia"]
 keygroups = [["Unbalanced", "AV", "Canal"]]
+def matches_heterotaxy_words(tokens):
+  for t in tokens:
+    for keyword in keywords:
+      editdist = leven.distance(t.lower(), keyword.lower())
+      if editdist < 3:
+        print(f"{col_name}[{index}] - {item} - {t} - [{keyword}] - {editdist}")
+        return True
+  return False
+  
+print(os.path.abspath(__file__))
+df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/docs/list_project.xlsx")
 
-flagged_idx = set()
+
+
+match_idx = set()
+stk = StanfordTokenizer() #Dependencies in the lib folder, ADD IT TO YOUR `CLASSPATH` env variable
 for col_name in ["SPECOTH", "CHD_OTHSP"]:
   for index, item in enumerate(df[col_name]):
     if type(item) is str:
-      # print(f"{index}: {item}")
-      tokens = stk.tokenize(item)
-      for t in tokens:
-        for keyword in keywords:
-          editdist = leven.distance(t.lower(), keyword.lower())
-          if editdist < 3:
-            flagged_idx.add(index)
-            print(f"{col_name}[{index}] - {item} - {t} - [{keyword}] - {editdist}")
+      if(matches_heterotaxy_words(stk.tokenize(item))):
+        match_idx.add(index)
 
-print(f"COUNT: {len(flagged_idx)}")
+print(f"COUNT: {len(match_idx)}")
 
-for i in flagged_idx:
-  print(i)
+for i in match_idx:
+  df.at[i, "HETEROTAXY"] = 1
+  
+df.to_excel(f"{os.path.dirname(os.path.abspath(__file__))}/docs/list_project_updated.xlsx")
+
 
 # print(f"Specoth Count: {len(specoth)}")
 #
