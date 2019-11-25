@@ -104,4 +104,11 @@ for key in class_to_col:
 	print(key)
 	print(class_to_col[key])
 	print('\n')
-	
+
+df_prep = []
+for key in col_to_class:
+	df_prep.append([key, col_to_class[key]])
+
+df = pd.DataFrame(df_prep, columns=["Column", "Type"])
+
+df.to_csv('./column_types.csv', index=None, header=True)
