@@ -116,3 +116,4 @@ df = pd.DataFrame(df_prep, columns=["Column", "Type"])
 
 
 df.to_csv(f"./{output_filename}", index=None, header=True)
+
