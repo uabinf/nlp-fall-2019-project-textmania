@@ -1,12 +1,20 @@
 #play-h.py
+import sys
+import os
+
+new_classpath = os.path.join(os.path.dirname(__file__), "lib/JAVA_CLASSPATH")
+if "CLASSPATH" in os.environ:
+	new_classpath = os.environ['CLASSPATH'] + ":" + new_classpath
+
+os.environ["CLASSPATH"] = new_classpath
+
 import pandas as pd
 import math
 
 from pandas import ExcelFile
 from nltk.tokenize.stanford import StanfordTokenizer 
 import Levenshtein as leven
-import sys
-import os
+
 
 keywords = ["Asplenia", "Heterotaxy", "Polysplenia", "Isomerism", "Dextrocardia"]
 keygroups = [["Unbalanced", "AV", "Canal"]]
