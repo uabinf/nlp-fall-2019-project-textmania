@@ -31,7 +31,7 @@ words = read_data.splitlines()
 word_to_vect = {}
 for word in words:
    vect = model.get_word_vector(word)
-   word_to_vect[word] = vect
+   word_to_vect[word] = vect.to_list()
    
 with open('biowords-to-vects.json', 'w') as f:
   json.dump(word_to_vect, f)
