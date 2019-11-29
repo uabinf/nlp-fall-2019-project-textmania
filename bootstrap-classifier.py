@@ -1,4 +1,8 @@
-#play-h.py
+#bootstrap-classifier.py
+
+# This file identifies instances of Heterotaxy using the Levenshtein.
+# Believe a simple tool like this could aid medical workers in finding the majority of cases in unstructured data.
+
 import sys
 import os
 
@@ -16,21 +20,21 @@ from nltk.tokenize.stanford import StanfordTokenizer
 import Levenshtein as leven
 
 
-keywords = ["Asplenia", "Heterotaxy", "Polysplenia", "Isomerism", "Dextrocardia"]
-keygroups = [["Unbalanced", "AV", "Canal"]]
+MAX_MATCH_EDIT_DISTANCE = 2
+HETEROTAXY_KEYWORDS = ["Asplenia", "Heterotaxy", "Polysplenia", "Isomerism", "Dextrocardia"]
 def matches_heterotaxy_words(tokens):
   for t in tokens:
-    for keyword in keywords:
+    for keyword in HETEROTAXY_KEYWORDS:
       editdist = leven.distance(t.lower(), keyword.lower())
-      if editdist < 3:
+      if editdist <= MAX_MATCH_EDIT_DISTANCE:
         print(f"{col_name}[{index}] - {item} - {t} - [{keyword}] - {editdist}")
         return True
   return False
-  
-print(os.path.abspath(__file__))
-df = pd.read_excel(f"{os.path.dirname(os.path.abspath(__file__))}/docs/list_project.xlsx")
-
-
+ 
+INPUT_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/docs/list_project.xlsx"
+OUTPUT_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/docs/list_project_updated.xlsx"
+print(f"Reading {INPUT_FILE}")
+df = pd.read_excel(INPUT_FILE)
 
 match_idx = set()
 stk = StanfordTokenizer() #Dependencies in the lib folder, ADD IT TO YOUR `CLASSPATH` env variable
@@ -40,12 +44,12 @@ for col_name in ["SPECOTH", "CHD_OTHSP"]:
       if(matches_heterotaxy_words(stk.tokenize(item))):
         match_idx.add(index)
 
-print(f"COUNT: {len(match_idx)}")
+print(f"Identified extra {len(match_idx)} cases of heterotaxy.")
 
 for i in match_idx:
   df.at[i, "HETEROTAXY"] = 1
   
-df.to_excel(f"{os.path.dirname(os.path.abspath(__file__))}/docs/list_project_updated.xlsx")
+df.to_excel(OUTPUT_FILE)
 
 
 # print(f"Specoth Count: {len(specoth)}")
