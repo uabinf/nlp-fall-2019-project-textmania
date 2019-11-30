@@ -1,3 +1,10 @@
+# folder that is just ignored (Like mimic database is in this folder. IRB that can't be on github is here too.)
 ignore-dir/*
+
+#junypter notebooks
 .ipynb_checkpoints/*
+
+# Excel file being edited.
 ~*
+#python virtualenv
+venv/*      
