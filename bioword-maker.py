@@ -1,4 +1,4 @@
-#bioword-finder.py
+#bioword-maker.py
 
 # This file produces a text file of all biowords in the data for vectorization.
 
@@ -28,7 +28,6 @@ print(f"Reading {INPUT_FILE}")
 df = pd.read_excel(INPUT_FILE)
 
 COLUMNS_TO_PROCESS = ['SPECOTH', 'CHD_OTHSP', 'SURGERY_HISTORY', 'LSNYHA_T', 'LSRHFCL_T', 'SLINODS']
-# COLUMNS_TO_PROCESS = ['SPECOTH']
 
 vocab = Counter()
 stk = StanfordTokenizer() #Dependencies in the lib folder, ADD IT TO YOUR `CLASSPATH` env variable
