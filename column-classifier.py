@@ -32,12 +32,12 @@ class ColumnClassifier:
 			col_class = "BOOL"
 		elif self.test_enum(u_vals):
 			col_class = "ENUM"
-			# if self.test_str(u_vals):
-			# 	col_class = "ENUM-STR" #
-			# elif self.test_int(u_vals):
-			# 	col_class = "ENUM-INT"
-			# elif self.test_float(u_vals):
-			# 	col_class = "ENUM-FLOAT"
+			if self.test_str(u_vals):
+				col_class = "ENUM-STR" #
+			elif self.test_int(u_vals):
+				col_class = "ENUM-INT"
+			elif self.test_float(u_vals):
+				col_class = "ENUM-FLOAT"
 		elif self.test_str(u_vals):
 			col_class = "STR"
 		elif self.test_int(u_vals):
