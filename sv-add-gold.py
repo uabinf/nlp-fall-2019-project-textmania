@@ -13,13 +13,13 @@ import re
 from pandas import ExcelFile
 
 
- 
-GOLD_STANDARD = f"GoldStandard-Filtered.xlsx"
+GOLD_STANDARD = f"SV-GoldStandard-Filtered.xlsx"
 INPUT_FILE = f"txpl_project.xlsx"
 OUTPUT_FILE = f"txpl_project_updated.xlsx"
 print(f"Reading {GOLD_STANDARD}")
 gold_df = pd.read_excel(GOLD_STANDARD)
-print(f"Gold Standard Shape: {gold_df.shape}")
+
+print(f"Single Ventricle (SV) Gold Standard Shape: {gold_df.shape}")
 
 print(f"Reading {INPUT_FILE}")
 txpl_df = pd.read_excel(INPUT_FILE)
@@ -28,6 +28,9 @@ sv_gold = txpl_df['PATIENT_ID'].apply(lambda x: 1 if x in pd.to_numeric(gold_df[
 
 
 def print_intersecting_patient_ids():
+  """
+  Prints the patient ids for gold records already flagged. Used for double-checking work.
+  """
   for i, v in enumerate(zip(sv_gold, txpl_df['SV_GROUP'], txpl_df['PATIENT_ID'])):
     if v[0] == 1 and v[1] == 1:
       print(f"SV_GOLD & SV_GROUP == 1 for PATIENT_ID: {v[2]}")
