@@ -1,14 +1,27 @@
 # nlp-fall-2019-project-textmania
 
 
-## Modules for rc.cheaha.edu
+## Running  Jupyter Notebooks on rc.uab.edu
 
+For running Jupyter Notebooks on rc.uab.edu, please use the following settings.
+
+Environment Setup:
 ```
 module load cuda92/toolkit/9.2.88
 module load cuda10.0/toolkit
 module load CUDA/9.2.88-GCC-7.3.0-2.30
 module load Anaconda3/5.3.1
+pip install --user xlrd
+pip install --user xgboost
+pip install --user wordcloud
+pip install --user Pillow
 ```
+
+Extra jupyter arguments: `--gres=gpu:1`
+Number of Hours: `3`
+Partition: `pascalnodes`
+Number of CPU: `2`
+Memory per CPU (GB): `16`
 
 
 ## Setup 
