@@ -52,7 +52,6 @@ INPUT_FILE = 'txpl_project_updated.xlsx'
 print(f"Reading {INPUT_FILE}")
 
 txpl_df = pd.read_excel(INPUT_FILE)
-txpl_df = txpl_df.head(500)
 
 print(f"Transplant Data Shape: {txpl_df.shape}")
 print(f"Transplant Data Columns:\n{txpl_df.columns}")
