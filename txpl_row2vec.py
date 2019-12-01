@@ -52,6 +52,8 @@ INPUT_FILE = 'txpl_project_updated.xlsx'
 print(f"Reading {INPUT_FILE}")
 
 txpl_df = pd.read_excel(INPUT_FILE)
+txpl_df = txpl_df.head(500)
+
 print(f"Transplant Data Shape: {txpl_df.shape}")
 print(f"Transplant Data Columns:\n{txpl_df.columns}")
 
@@ -71,11 +73,18 @@ def transform_text_to_vect(text):
   return np.mean(vects, axis=0)
 
 TEXT_COLS = ['CHD_OTHSP','SPECOTH','SURGERY_HISTORY']
+for colname in TEXT_COLS:
+  txpl_df[colname].fillna('', inplace=True)
 # row2vect = pd.DataFrame(columns=(['PATIENT_ID'] + list(map(lambda x: f"WordVec{x}", range(200)))))
 row2vect = []
 for index, row in txpl_df.iterrows():
-  col_vects = np.array(list(map(lambda colname: transform_text_to_vect(row[colname]), TEXT_COLS)))
-  row_vect = np.mean(col_vects, axis=0)
+  
+  row_text = ''
+  for colname in TEXT_COLS: 
+    if len(txpl_df[colname]) > 0:
+      row_text = ' '.join(txpl_df[colname])
+  
+  row_vect = transform_text_to_vect(row_text)
 
   new_row = [row['PATIENT_ID']] + row_vect.tolist()
   row2vect.append(new_row)
