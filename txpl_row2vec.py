@@ -4,6 +4,7 @@
 import sys
 import os
 import json
+import time
 
 import pandas as pd
 import numpy as np
@@ -63,6 +64,15 @@ print(f"Transplant Data Columns:\n{txpl_df.columns}")
 stk = StanfordTokenizer()
 empty_vect = np.zeros(200)
 def transform_text_to_vect(text):
+  """
+  Transforms a string into a vector by tokenizing with the StandfordTokenizer
+  then looking up the BioWordVec embedding for the from a pre-computed dataset.
+  then taking the centroid of the vectors.
+  
+  :param text: String to turn into a vector
+  
+  :returns: np.array of length 200, which is the centroid of embeddings of each token.
+  """
   if not isinstance(text, str):
     return empty_vect
     
@@ -72,10 +82,12 @@ def transform_text_to_vect(text):
   return np.mean(vects, axis=0)
 
 TEXT_COLS = ['CHD_OTHSP','SPECOTH','SURGERY_HISTORY']
+
 for colname in TEXT_COLS:
   txpl_df[colname].fillna('', inplace=True)
-# row2vect = pd.DataFrame(columns=(['PATIENT_ID'] + list(map(lambda x: f"WordVec{x}", range(200)))))
+  
 row2vect = []
+start_time = time.time()
 for index, row in txpl_df.iterrows():
   
   row_text = ''
@@ -88,14 +100,8 @@ for index, row in txpl_df.iterrows():
   new_row = [row['PATIENT_ID']] + row_vect.tolist()
   row2vect.append(new_row)
   
-  if (index+1) % 100 == 0:
-    print(f"index processed: {index}")
-  
-  # for colname in TEXT_COLS:
-  #   vect = transform_text_to_vect(row[colname])
-  #   print(f"INDEX - {index}, COLNAME - {colname}")
-  #   print(vect)
-  #   print()
+  if (index % 100) == 0:
+    print(f"Processed: {index+1} rows {round(100.0*(index/txpl_df.shape[0]), 2)}% ({round(time.time() - start_time)} secs)")
 
 row2vect_cols = ['PATIENT_ID'] + list(map(lambda x: f"WordVec{x}", range(200)))
 row2vect = pd.DataFrame(row2vect, columns=row2vect_cols)
