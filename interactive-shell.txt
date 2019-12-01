@@ -1,5 +1,31 @@
-srun --ntasks=1 --cpus-per-task=2 --mem-per-cpu=16384 --time=2:00:00 --partition=express --job-name=NLP_OLEAJ --pty /bin/bash
+###
+# Start Interactive Shell
+###
+srun --ntasks=1 --cpus-per-task=2 --mem-per-cpu=16384 --time=2:00:00 --partition=express --job-name=nlp_${USER} --pty /bin/bash
+
+###
+# Setup Interactive Shell
+###
+if [ ! -f ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin ]; then
+    cp ${USER_DATA}/BioWordVec_PubMed_MIMICIII_d200.bin ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin
+fi
+
 
 module load Python/3.6.3-intel-2017a
-source venv/bin/activate
+if [ -d venv ]; then
+    source venv/bin/activate
+else
+    echo "cd into proj dir and run [source venv/bin/activate]"
+fi
 
+
+###
+# CLEAN UP COMMAND
+###
+if [ -f ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin ]; then
+    if [ ! -f ${USER_DATA}/BioWordVec_PubMed_MIMICIII_d200.bin ]; then
+        mv ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin ${USER_DATA}/BioWordVec_PubMed_MIMICIII_d200.bin
+    else
+        rm ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin
+    fi
+fi 
