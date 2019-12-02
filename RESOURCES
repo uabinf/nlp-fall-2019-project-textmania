@@ -19,3 +19,7 @@ https://machinelearningmastery.com/feature-importance-and-feature-selection-with
 https://stackoverflow.com/questions/37593293/what-is-the-simplest-way-to-get-tfidf-with-pandas-dataframe
 https://stackoverflow.com/questions/45961747/append-tfidf-to-pandas-dataframe
 https://stackabuse.com/overview-of-classification-methods-in-python-with-scikit-learn/
+
+#How do I use the K-Best to see which features are best by mutual information when the K-Best uses chisq as default
+#Could not use chisq because we have negative values in age due to the fact babies can be put on the wait list before they are born
+#https://stackoverflow.com/questions/43643278/how-do-i-selectkbest-using-mutual-information-from-a-mixture-of-discrete-and-con
