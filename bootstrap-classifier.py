@@ -1,7 +1,10 @@
 #bootstrap-classifier.py
 
-# This file identifies instances of Heterotaxy using the Levenshtein.
-# Believe a simple tool like this could aid medical workers in finding the majority of cases in unstructured data.
+###
+# This file identifies instances of Heterotaxy using the Edit Distance with the Levenshtein algorithm
+# It reads in a excel file then calculates the edit distance of each word against a list of keywords,
+# which typically cause a patient to be flagged with Heterotaxy. 
+# It output an excel file with an additional columnn of to make that these records should be reviewed. 
 
 import sys
 import os
@@ -47,7 +50,7 @@ for col_name in ["SPECOTH", "CHD_OTHSP"]:
 print(f"Identified extra {len(match_idx)} cases of heterotaxy.")
 
 for i in match_idx:
-  df.at[i, "HETEROTAXY"] = 1
+  df.at[i, "REVIEW_FOR_HETEROTAXY"] = 1
   
 df.to_excel(OUTPUT_FILE)
 

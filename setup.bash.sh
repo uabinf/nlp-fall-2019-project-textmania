@@ -1,5 +1,9 @@
 #!/bin/bash
 
+####
+# This script setups a python environment on cheaha.
+# So that the python files in the can be run on the command-line.
+
 # Assume on Cheaha if we are ssh'd into something
 if [ ${#SSH_CONNECTION} -gt 0 ]; then
   module load Python/3.6.3-intel-2017a

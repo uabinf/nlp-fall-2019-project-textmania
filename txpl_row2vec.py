@@ -1,5 +1,8 @@
 #txpl_row2vec.py
 
+#####
+# This file takes txpl_project.xlsx and generates an embedding representing the text in the row.
+# It then outputs an excel 
 
 import sys
 import os

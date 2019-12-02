@@ -1,10 +1,15 @@
-#play-columns.py
+#column-classifier.py
+
+###
+# This is just a simple scripot to identifing the types of columns.
+# It looks through a dataset and decides if the data type is a BOOL, ENUM, STR, INT, or FLOAT.
+# Then it outputs the results to a file.
+
 import pandas as pd
 import math
 
 from pandas import ExcelFile
 from nltk.tokenize.stanford import StanfordTokenizer 
-import Levenshtein as leven
 import sys
 import os
 
@@ -115,5 +120,5 @@ for key in col_to_class:
 df = pd.DataFrame(df_prep, columns=["Column", "Type"])
 
 
-df.to_csv(f"./{output_filename}", index=None, header=True)
+df.to_csv(output_filepath, index=None, header=True)
 

@@ -1,6 +1,9 @@
 #bioword-maker.py
 
-# This file produces a text file of all biowords in the data for vectorization.
+###
+# This file builds a vocabulary from the dataset.
+# It moves through each string column in the dataset tokenizes each cell
+# And adds each token to a vocublary list and then write this out to a file.
 
 import sys
 import os

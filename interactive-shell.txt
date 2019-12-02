@@ -1,3 +1,9 @@
+#interactive-shell.txt
+
+####
+# These are just command for cheaha that I wanted to easily have available for copy pasting.
+
+
 ###
 # Start Interactive Shell
 ###
