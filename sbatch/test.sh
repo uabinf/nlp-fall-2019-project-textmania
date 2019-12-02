@@ -17,6 +17,8 @@ function fail {
     exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
 }
 
+cd $HOME/uab-proj
+
 if [ ! -f ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin ]; then
     cp ${USER_DATA}/BioWordVec_PubMed_MIMICIII_d200.bin ${USER_SCRATCH}/BioWordVec_PubMed_MIMICIII_d200.bin
 fi
