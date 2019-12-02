@@ -13,3 +13,9 @@ https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-lo
 
 #Feature Importance
 https://machinelearningmastery.com/feature-importance-and-feature-selection-with-xgboost-in-python/
+
+#Code resources for problems I researched
+#Trying to figure out how to have continuous features and TFIDF values in the same dataframe
+https://stackoverflow.com/questions/37593293/what-is-the-simplest-way-to-get-tfidf-with-pandas-dataframe
+https://stackoverflow.com/questions/45961747/append-tfidf-to-pandas-dataframe
+https://stackabuse.com/overview-of-classification-methods-in-python-with-scikit-learn/
