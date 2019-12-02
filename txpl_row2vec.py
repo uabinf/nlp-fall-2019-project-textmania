@@ -89,13 +89,12 @@ for colname in TEXT_COLS:
 row2vect = []
 start_time = time.time()
 for index, row in txpl_df.iterrows():
+  col_vects = np.array(list(map(lambda colname: transform_text_to_vect(row[colname]), TEXT_COLS)))
+  row_vect = np.mean(col_vects, axis=0)
+
+  new_row = [row['PATIENT_ID']] + row_vect.tolist()
+  row2vect.append(new_row)
   
-  row_text = ''
-  for colname in TEXT_COLS: 
-    if len(txpl_df[colname]) > 0:
-      row_text = ' '.join(txpl_df[colname])
-  
-  row_vect = transform_text_to_vect(row_text)
 
   new_row = [row['PATIENT_ID']] + row_vect.tolist()
   row2vect.append(new_row)
