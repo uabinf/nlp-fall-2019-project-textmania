@@ -38,10 +38,10 @@ else
 fi
 
 echo "Running bioword-maker.py..."
-python bioword-maker.py
+python -u bioword-maker.py
 
 echo "Running biowords-to-vects.py..."
-python biowords-to-vects.py 
+python -u biowords-to-vects.py 
 
 ###
 # CLEAN UP COMMAND
