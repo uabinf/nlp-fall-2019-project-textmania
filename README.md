@@ -1,6 +1,6 @@
 # nlp-fall-2019-project-textmania
 
-## Prediction of Single Ventricle Congenital Heart Disease from Free Text
+## Improving Prediction of Single Ventricle Congenital Heart Disease with Free Text
 
 A single ventricle defect is a type of heart defect that a child is born with. It occurs when one of the two pumping chambers in the heart, called ventricles, isn’t large enough or strong enough to work correctly. In some cases, the chamber might be missing a valve.
 
