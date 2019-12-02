@@ -73,7 +73,7 @@ def transform_text_to_vect(text):
   
   :returns: np.array of length 200, which is the centroid of embeddings of each token.
   """
-  if not isinstance(text, str):
+  if not isinstance(text, str) or len(text) == 0:
     return empty_vect
     
   tokens = stk.tokenize(text)
@@ -89,15 +89,13 @@ for colname in TEXT_COLS:
 row2vect = []
 start_time = time.time()
 for index, row in txpl_df.iterrows():
+  
   col_vects = np.array(list(map(lambda colname: transform_text_to_vect(row[colname]), TEXT_COLS)))
   row_vect = np.mean(col_vects, axis=0)
 
   new_row = [row['PATIENT_ID']] + row_vect.tolist()
   row2vect.append(new_row)
   
-
-  new_row = [row['PATIENT_ID']] + row_vect.tolist()
-  row2vect.append(new_row)
   
   if (index % 100) == 0:
     print(f"Processed: {index+1} rows {round(100.0*(index/txpl_df.shape[0]), 2)}% ({round(time.time() - start_time)} secs)")
