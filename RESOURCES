@@ -1,0 +1,15 @@
+#Pictures of SV heart disease on the poster are from here
+https://www.heart.org/en/health-topics/congenital-heart-defects/about-congenital-heart-defects/single-ventricle-defects
+
+#XG Boost was read about here 
+https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/
+https://eli5.readthedocs.io/en/latest/tutorials/xgboost-titanic.html
+https://xgboost.readthedocs.io/en/latest/tutorials/model.html
+
+#XG Boost picture from:
+https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d
+
+#Kaplan-Meier was generated using the PHTS data after Tobias utlizized the free text fields to help identify 103 more patients to the SV field
+
+#Feature Importance
+https://machinelearningmastery.com/feature-importance-and-feature-selection-with-xgboost-in-python/
