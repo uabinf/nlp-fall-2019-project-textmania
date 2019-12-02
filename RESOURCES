@@ -1,0 +1,25 @@
+#Pictures of SV heart disease on the poster are from here
+https://www.heart.org/en/health-topics/congenital-heart-defects/about-congenital-heart-defects/single-ventricle-defects
+
+#XG Boost was read about here 
+https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/
+https://eli5.readthedocs.io/en/latest/tutorials/xgboost-titanic.html
+https://xgboost.readthedocs.io/en/latest/tutorials/model.html
+
+#XG Boost picture from:
+https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d
+
+#Kaplan-Meier was generated using the PHTS data after Tobias utlizized the free text fields to help identify 103 more patients to the SV field
+
+#Feature Importance
+https://machinelearningmastery.com/feature-importance-and-feature-selection-with-xgboost-in-python/
+
+#Code resources for problems I researched
+#Trying to figure out how to have continuous features and TFIDF values in the same dataframe
+https://stackoverflow.com/questions/37593293/what-is-the-simplest-way-to-get-tfidf-with-pandas-dataframe
+https://stackoverflow.com/questions/45961747/append-tfidf-to-pandas-dataframe
+https://stackabuse.com/overview-of-classification-methods-in-python-with-scikit-learn/
+
+#How do I use the K-Best to see which features are best by mutual information when the K-Best uses chisq as default
+#Could not use chisq because we have negative values in age due to the fact babies can be put on the wait list before they are born
+#https://stackoverflow.com/questions/43643278/how-do-i-selectkbest-using-mutual-information-from-a-mixture-of-discrete-and-con

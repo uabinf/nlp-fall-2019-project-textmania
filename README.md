@@ -1,5 +1,16 @@
 # nlp-fall-2019-project-textmania
 
+## Prediction of Single Ventricle Congenital Heart Disease from Free Text
+
+A single ventricle defect is a type of heart defect that a child is born with. It occurs when one of the two pumping chambers in the heart, called ventricles, isn’t large enough or strong enough to work correctly. In some cases, the chamber might be missing a valve.
+
+In the Pediatric Heart Transplant Society, single ventricle patients are the largest percentage of congenital heart disease (CHD) patients. These patients are of high clinical interest to surgeons as their risk for graft loss (death or retranspant) after a transplant is high. 
+
+Text fields collected in PHTS can also yield valid data about congenital heart disease. Surgery history is collected for all patients in PHTS and contains information on operations performed on all patients. These surgeries can range from Fontan, Glenn, and Norwood operations. Dr. Kirklin will review these text fields and determine if the surgery listed can be classified as a single ventricle surgery, or not. This work is tedious and takes weeks, as these text fields contain thousands of entries.
+
+Can a machine learning model help predict single ventricle status? Can introducing text fields into a machine learning help further these predictions? 
+
+The future goal would be to have a machine learning model that could be fed in information on a patient, and the model determine if that patient is single ventricle or not.
 
 ## Running  Jupyter Notebooks on rc.uab.edu
 
