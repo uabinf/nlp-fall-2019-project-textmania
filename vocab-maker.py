@@ -51,8 +51,7 @@ class VocabBuilder():
  
 INPUT_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/txpl_project.xlsx"
 OUTPUT_PREFIX = 'vocab_'
-OUTPUT_POSTFIX = + os.path.splitext(os.path.basename(INPUT_FILE))[0] + ".txt"
-OUTPUT_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/{OUTPUT_FILENAME}"
+OUTPUT_POSTFIX = os.path.splitext(os.path.basename(INPUT_FILE))[0] + ".txt"
 
 print(f"Reading {INPUT_FILE}")
 df = pd.read_excel(INPUT_FILE)
@@ -63,8 +62,8 @@ COLUMNS_TO_PROCESS = ['SPECOTH', 'CHD_OTHSP', 'SURGERY_HISTORY']
 
 vocab_builders = {
     "stanford" : VocabBuilder(StanfordTokenizer()),
-    "stanford_stop" : VocabBuilder(StanfordTokenizer(), set(stopwords.words('english')))),
-    "stanford_stop_lower" : VocabBuilder(StanfordTokenizer(), set(stopwords.words('english')) : lambda x: x.lower())),
+    "stanford_stop" : VocabBuilder(StanfordTokenizer(), set(stopwords.words('english'))),
+    "stanford_stop_lower" : VocabBuilder(StanfordTokenizer(), set(stopwords.words('english')), lambda x: x.lower()),
 
     "whitespace" : VocabBuilder(WhitespaceTokenizer()),
     "whitespace_stop" : VocabBuilder(WhitespaceTokenizer(), set(stopwords.words('english'))),
