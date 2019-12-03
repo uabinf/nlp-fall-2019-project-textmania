@@ -34,6 +34,8 @@ class VocabBuilder():
         
         if self.token_transformer:
             self.stopwords = set(map(lambda stopword: self.token_transformer(stopword), stopwords))
+        else:
+            self.stopwords = stopwords
 
         self.vocab = set()
     
