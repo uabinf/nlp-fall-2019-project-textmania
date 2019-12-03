@@ -43,6 +43,8 @@ class VocabBuilder():
         
         if self.token_transformer:
             trans_tokens = map(lambda token: self.token_transformer(token), tokens)
+        else:
+            trans_tokens = tokens
             
         final_tokens = filter(lambda token: token not in self.stopwords, trans_tokens)
         
