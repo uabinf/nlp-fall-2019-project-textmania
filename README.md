@@ -6,13 +6,15 @@ A single ventricle defect is a type of heart defect that a child is born with. I
 
 In the Pediatric Heart Transplant Society, single ventricle patients are the largest percentage of congenital heart disease (CHD) patients. These patients are of high clinical interest to surgeons as their risk for graft loss (death or retranspant) after a transplant is high. 
 
-Text fields collected in PHTS can also yield valid data about congenital heart disease. Surgery history is collected for all patients in PHTS and contains information on operations performed on all patients. These surgeries can range from Fontan, Glenn, and Norwood operations. Dr. Kirklin, a world-renowned cardiac surgeon, will review these text fields and determine if the surgery listed can be classified as a single ventricle surgery, or not. This work is tedious and takes weeks, as these text fields contain thousands of entries. 
+Text fields collected in PHTS can also yield valid data about congenital heart disease. Surgery history is collected for all patients in PHTS and contains information on operations performed on all patients. These surgeries can range from the Norwood, Glenn, and Fontan operations. Dr. Kirklin, a world-renowned cardiac surgeon, will review these text fields and determine if the surgery listed can be classified as a single ventricle surgery, or not. This work is tedious and takes weeks, as these text fields contain thousands of entries. 
 
 Two other text fields where information can be collected on this type of disease is Congenital Heart Disease: Other Specify and Medical History at Listing: Specify. Coordinators are free to enter in free text of their assessment of disease.
 
-Can a machine learning model help predict single ventricle status? Can introducing text fields into a machine learning help further these predictions? 
+Can a machine learning model help predict single ventricle status? Can introducing text fields into a machine learning model help further these predictions? Are medical personnel doomed to scan thousands of text boxes and continue to make decisions instead of focusing on patient care?
 
-The future goal would be to have a machine learning model that could be fed in information on a patient, and the model determine if that patient is single ventricle or not.
+The future goal would be to have a machine learning model that could be fed in information on a patient, and the model determine if that patient is single ventricle or not. 
+
+This will be the first machine learning project done on PHTS data! What lessons we learn from this project we can take into future endeavors.
 
 ## Running  Jupyter Notebooks on rc.uab.edu
 
