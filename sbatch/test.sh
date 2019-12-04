@@ -5,7 +5,7 @@
 #SBATCH --output=output.txt
 #SBATCH --ntasks=1
 #SBATCH --partition=short
-#SBATCH --time=04:00:00
+#SBATCH --time=08:00:00
 #SBATCH --mem-per-cpu=16GB
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=$USER@uab.edu
