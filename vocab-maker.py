@@ -85,7 +85,7 @@ for builder_key in vocab_builders:
             if (index % 500) == 0:
                 print(f"  at index {index}")
     
-    with open(f"{OUTPUT_PREFIX}_{builder_key}_{OUTPUT_POSTFIX}") as f:
+    with open(f"vocabs/{OUTPUT_PREFIX}_{builder_key}_{OUTPUT_POSTFIX}", 'w') as f:
         f.write("\n".join(builder.vocab))
 
 # print(f"Specoth Count: {len(specoth)}")
