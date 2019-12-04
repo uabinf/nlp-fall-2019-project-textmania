@@ -88,31 +88,5 @@ for builder_key in vocab_builders:
     with open(f"vocabs/{OUTPUT_PREFIX}_{builder_key}_{OUTPUT_POSTFIX}", 'w') as f:
         f.write("\n".join(builder.vocab))
 
-# print(f"Specoth Count: {len(specoth)}")
-#
-# for keyword in keywords:
-#   for index, item in enumerate(specoth):
-#     tokens = stk.tokenize(item)
-#     for t in tokens:
-#       editdist = leven.distance(t.lower(), 'heterotaxy'.lower())
-#       if editdist < 4:
-#         print(f"{index} - {item} - {t}")
-#         print(f"EDIT DISTANCE: {editdist}")
-#
-# print("\n-----------\n")
-# print("CHD_OTHSP")
-# chd_othsp = [item for item in df["CHD_OTHSP"].to_list() if type(item) is str]
-# print(f"Chd_Othsp Count: {len(chd_othsp)}")
-# # print("\n".join(chd_othsp))
-#
-# for index, item in enumerate(chd_othsp):
-#   tokens = stk.tokenize(item)
-#   for t in tokens:
-#     editdist = leven.distance(t.lower(), 'heterotaxy'.lower())
-#     if editdist < 4:
-#       print(f"{index} - {item} - {t}")
-#       print(f"EDIT DISTANCE: {editdist}")
-
-
 
 
