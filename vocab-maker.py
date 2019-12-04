@@ -8,6 +8,7 @@
 import sys
 import os
 
+DEBUG=False #Limits processing the full file.
 
 #Updates Classpath to fix dependency.
 new_classpath = os.path.join(os.path.dirname(__file__), "lib/JAVA_CLASSPATH")
@@ -54,7 +55,7 @@ class VocabBuilder():
             self.vocab.add(item)
  
 INPUT_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/txpl_project.xlsx"
-OUTPUT_PREFIX = 'vocab_'
+OUTPUT_PREFIX = 'vocab'
 OUTPUT_POSTFIX = os.path.splitext(os.path.basename(INPUT_FILE))[0] + ".txt"
 
 print(f"Reading {INPUT_FILE}")
@@ -80,6 +81,9 @@ for builder_key in vocab_builders:
     for col_name in COLUMNS_TO_PROCESS:
         print(f"Processing {col_name}...")
         for index, item in enumerate(df[col_name]):
+            if DEBUG and index > 10:
+                print("[debug] only processing 10 rows.")
+                break
             if isinstance(item, str):
                 builder.build_with_text(item)
             if (index % 500) == 0:
