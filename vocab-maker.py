@@ -49,7 +49,8 @@ class VocabBuilder():
         else:
             trans_tokens = tokens
             
-        final_tokens = filter(lambda token: token not in self.stopwords, trans_tokens)
+        # Filter stopwords by ignoring the case
+        final_tokens = filter(lambda token: token.lower() not in self.stopwords.lower(), trans_tokens)
         
         for item in final_tokens:
             self.vocab.add(item)
