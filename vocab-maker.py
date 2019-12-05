@@ -8,7 +8,7 @@
 import sys
 import os
 
-DEBUG=False #Limits processing the full file.
+DEBUG=True #Limits processing the full file.
 
 #Updates Classpath to fix dependency.
 new_classpath = os.path.join(os.path.dirname(__file__), "lib/JAVA_CLASSPATH")
@@ -33,10 +33,8 @@ class VocabBuilder():
         
         self.token_transformer = token_transformer
         
-        if self.token_transformer:
-            self.stopwords = set(map(lambda stopword: self.token_transformer(stopword), stopwords))
-        else:
-            self.stopwords = stopwords
+        #Make sure all stopwords for lowercased
+        self.stopwords = set(map(lambda stopword: stopword.lower(), stopwords))
 
         self.vocab = set()
     
@@ -50,7 +48,7 @@ class VocabBuilder():
             trans_tokens = tokens
             
         # Filter stopwords by ignoring the case
-        final_tokens = filter(lambda token: token.lower() not in self.stopwords.lower(), trans_tokens)
+        final_tokens = filter(lambda token: token.lower() not in self.stopwords, trans_tokens)
         
         for item in final_tokens:
             self.vocab.add(item)
