@@ -103,9 +103,11 @@ In the `sbatch` subdirectory any of the shell scripts should be runnable with `s
 * `biowords_txpl_project.txt` - Vocbulary used for the poster.
 * `column-classifier.py` - Simple script to identify column types, which are strings / enumerations (categorical) / numeric.
 * `docs/*.pdf` - Forms used to collect the data the fields in the excel is identified in the form.
-* `docs/list_project.xlsx` - Data from PHTS for use with identifying heterotaxy.
-* `docs/list_project_updated.xlsx` - list project with additonal patients classified as Heterotaxy using simple heterotaxy classifier and a file with PHI, so can't be on github.
 * `heart2.jpg` - Image Mask for WordCloud.
+* `heterotaxy/heterotaxy-classifier.py` - Script that identifies patient's not classified as having heterotaxy that should be by using an edit distance algorithm.
+* `heterotaxy/list_project.xlsx` - Data from PHTS for use with identifying heterotaxy.
+* `heterotaxy/list_project_process.xlsx' - additional heterotaxy patients identified by simple edit distance algorithm.
+* `heterotaxy/list_project_updated.xlsx` - list project with additonal patients classified as Heterotaxy using simple heterotaxy classifier and a file with PHI, so can't be on github.
 * `lib/JAVA_CLASSPATH` - Dependencies that need to be place in the JAVA_CLASSPATH for Stanford Tokenizer to work.
 * `lib/Stopwatch.py` - Simple class for timing how long things take.
 * `papers/*.pdf` - Some papers used for researching.
