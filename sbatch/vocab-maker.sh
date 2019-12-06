@@ -17,8 +17,10 @@ function fail {
     exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
 }
 
-
-cd $HOME/uab-proj
+####
+# Need to set the current working directory to the parent of the directory this file is in.
+PROJ_DIR="$(dirname $(dirname ${BASH_SOURCE[0]}))"
+cd $PROJ_DIR
 
 ###
 # Setup Interactive Shell
@@ -39,6 +41,9 @@ fi
 
 echo "Running vocab-maker.py..."
 python -u vocab-maker.py
+
+echo "Running vocabs-to-vects.py..."
+python -u vocabs-to-vects.py
 
 ###
 # CLEAN UP COMMAND
