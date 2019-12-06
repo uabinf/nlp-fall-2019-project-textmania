@@ -8,7 +8,8 @@
 import sys
 import os
 
-DEBUG=True #Limits processing the full file.
+DEBUG=False #Limits processing the full file.
+REWRITE_VOCAB=False
 
 #Updates Classpath to fix dependency.
 new_classpath = os.path.join(os.path.dirname(__file__), "lib/JAVA_CLASSPATH")
@@ -76,6 +77,12 @@ vocab_builders = {
   
 for builder_key in vocab_builders:
     print(f"Building Vocab for {builder_key}...")
+    
+    output_file = f"vocabs/{OUTPUT_PREFIX}_{builder_key}_{OUTPUT_POSTFIX}"
+    if not REWRITE_VOCAB and os.path.exists(output_file):
+        print(f"  Skipping Building vocab file exists.")
+        continue
+    
     builder = vocab_builders[builder_key]
     for col_name in COLUMNS_TO_PROCESS:
         print(f"Processing {col_name}...")
@@ -87,9 +94,10 @@ for builder_key in vocab_builders:
                 builder.build_with_text(item)
             if (index % 500) == 0:
                 print(f"  at index {index}")
-    
-    with open(f"vocabs/{OUTPUT_PREFIX}_{builder_key}_{OUTPUT_POSTFIX}", 'w') as f:
+    with open(output_file, 'w') as f:
         f.write("\n".join(builder.vocab))
+        
+print("\n!!!Vocab Building Complete")
 
 
 
