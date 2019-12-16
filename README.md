@@ -126,7 +126,7 @@ In the `sbatch` subdirectory any of the shell scripts should be runnable with `s
 * `vocab-maker.py` - Script that produces different types of vocabularies from the dataset.
 * `vocabs/*` - Directory of output from the vocab-maker.py script.
 
-## Diversion of Work
+## Division of Work
 
 Devin was the lead on this project. She got the compiled and cleaned the data available from PHTS into an excel format and stripped fields that contained PHI information. Devin also did the work in the Junypter Python Notebook running the data through Machine Learning models, which was the bulk of the project. Tobias contributed by cleaning up the data like adding patient classified as single ventricle by a human and producing the embeddings representing the text from each row of the data and making sure that everything would run correctly on Cheaha.
 
