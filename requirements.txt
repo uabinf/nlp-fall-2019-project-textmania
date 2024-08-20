@@ -1,7 +1,7 @@
 et-xmlfile==1.0.1
 fasttext==0.9.1
 jdcal==1.4.1
-nltk==3.4.5
+nltk==3.9
 numpy==1.17.4
 openpyxl==3.0.2
 pandas==0.25.3
